@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetFun - Learn Networking Playfully</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>NetFun</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#learn" class="nav-link">
+                    <i class="fas fa-book"></i> Learn
+                </a>
+                <a href="#games" class="nav-link">
+                    <i class="fas fa-gamepad"></i> Games
+                </a>
+                <a href="#tools" class="nav-link">
+                    <i class="fas fa-tools"></i> Tools
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Learn Networking <span class="highlight">Playfully!</span></h1>
+            <p class="hero-subtitle">IP addresses, subnetting, and binary made easy with interactive games and visual learning.</p>
+            <div class="hero-buttons">
+                <a href="#games" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i> Start Playing
+                </a>
+                <a href="#learn" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Start Learning
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="ip-visualizer" id="heroVisualizer">
+                <!-- Dynamic IP visualization -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="section games-section" id="games">
+        <h2 class="section-title">🎮 Interactive Games</h2>
+        <p class="section-subtitle">Learn by playing these fun games!</p>
+        
+        <div class="games-grid">
+            <!-- Game 1: IP Guesser -->
+            <div class="game-card" onclick="loadGame('ip-guesser')">
+                <div class="game-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>IP Detective</h3>
+                <p>Find valid IP addresses in a sea of imposters!</p>
+                <div class="game-difficulty">
+                    <span class="difficulty-badge easy">Easy</span>
+                </div>
+            </div>
+
+            <!-- Game 2: Digital Neighborhood -->
+            <div class="game-card" onclick="loadGame('neighborhood')">
+                <div class="game-icon">
+                    <i class="fas fa-city"></i>
+                </div>
+                <h3>Digital Neighborhood</h3>
+                <p>Explore how devices live in network neighborhoods</p>
+                <div class="game-difficulty">
+                    <span class="difficulty-badge medium">Medium</span>
+                </div>
+            </div>
+
+            <!-- Game 3: Binary Builder -->
+            <div class="game-card" onclick="loadGame('binary-builder')">
+                <div class="game-icon">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <h3>Binary Builder</h3>
+                <p>Flip bits to match target IP addresses</p>
+                <div class="game-difficulty">
+                    <span class="difficulty-badge hard">Hard</span>
+                </div>
+            </div>
+
+            <!-- Game 4: Subnet Puzzle -->
+            <div class="game-card" onclick="loadGame('subnet-puzzle')">
+                <div class="game-icon">
+                    <i class="fas fa-route"></i>
+                </div>
+                <h3>Subnet Puzzle</h3>
+                <p>Match devices to their correct subnets</p>
+                <div class="game-difficulty">
+                    <span class="difficulty-badge expert">Expert</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Tools -->
+    <section class="section tools-section" id="tools">
+        <h2 class="section-title">🛠️ Learning Tools</h2>
+        
+        <div class="tools-container">
+            <!-- IP Explorer Tool -->
+            <div class="tool-card">
+                <h3><i class="fas fa-map-marked-alt"></i> IP Explorer</h3>
+                <div class="tool-input-group">
+                    <input type="text" id="ipInput" placeholder="Enter IP like 192.168.1.1" 
+                           pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}">
+                    <button onclick="analyzeIP()" class="btn-tool">
+                        <i class="fas fa-search"></i> Analyze
+                    </button>
+                </div>
+                <div id="ipAnalysis" class="analysis-result">
+                    <!-- Results appear here -->
+                </div>
+            </div>
+
+            <!-- Subnet Calculator -->
+            <div class="tool-card">
+                <h3><i class="fas fa-calculator"></i> Subnet Calculator</h3>
+                <div class="tool-input-group">
+                    <input type="text" id="subnetInput" placeholder="192.168.1.0/24">
+                    <button onclick="calculateSubnet()" class="btn-tool">
+                        <i class="fas fa-calculator"></i> Calculate
+                    </button>
+                </div>
+                <div id="subnetResult" class="analysis-result">
+                    <!-- Results appear here -->
+                </div>
+            </div>
+
+            <!-- Binary Converter -->
+            <div class="tool-card">
+                <h3><i class="fas fa-exchange-alt"></i> Binary Converter</h3>
+                <div class="binary-converter">
+                    <div class="binary-input">
+                        <label>Decimal:</label>
+                        <input type="number" id="decimalInput" min="0" max="255" value="192" 
+                               oninput="convertDecimalToBinary()">
+                    </div>
+                    <div class="binary-output">
+                        <label>Binary:</label>
+                        <div class="binary-bits" id="binaryBits">
+                            <!-- Binary bits appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Area (Dynamically Loaded) -->
+    <section class="section game-area-section" id="gameArea">
+        <div class="game-container" id="gameContainer">
+            <!-- Games load here dynamically -->
+            <div class="welcome-message">
+                <h2>👋 Welcome to NetFun!</h2>
+                <p>Select a game from above to start playing and learning!</p>
+                <div class="game-stats">
+                    <div class="stat">
+                        <i class="fas fa-trophy"></i>
+                        <span>Score: <span id="totalScore">0</span></span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span>Games Played: <span id="gamesPlayed">0</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>NetFun</h4>
+                <p>Making networking education fun, visual, and accessible for everyone.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#learn">Learn</a>
+                <a href="#games">Games</a>
+                <a href="#tools">Tools</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made with <i class="fas fa-heart"></i> for networking learners everywhere</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="games/ip-guesser.js"></script>
+    <script src="games/subnet-puzzle.js"></script>
+    <script src="games/binary-builder.js"></script>
+    <script src="components/ip-visualizer.js"></script>
+    <script src="components/neighborhood.js"></script>
+</body>
+</html>
