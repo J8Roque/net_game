@@ -3,228 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NetFun - Learn Networking Playfully</title>
+    <title>Subnet Neighborhood Game - Learn Networking Easily</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
                 <i class="fas fa-network-wired"></i>
-                <span>NetFun</span>
-            </a>
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link active">
+                Subnet Neighborhood
+            </h1>
+            <p class="tagline">Learn IP addresses and subnetting like organizing houses in a neighborhood!</p>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-tabs" id="navTabs">
+                <button class="nav-tab active" data-tab="home">
                     <i class="fas fa-home"></i> Home
-                </a>
-                <a href="#learn" class="nav-link">
-                    <i class="fas fa-book"></i> Learn
-                </a>
-                <a href="#games" class="nav-link">
-                    <i class="fas fa-gamepad"></i> Games
-                </a>
-                <a href="#tools" class="nav-link">
-                    <i class="fas fa-tools"></i> Tools
-                </a>
-                <a href="#about" class="nav-link">
-                    <i class="fas fa-info-circle"></i> About
-                </a>
+                </button>
+                <button class="nav-tab" data-tab="game1">
+                    <i class="fas fa-search"></i> Find Neighbors
+                </button>
+                <button class="nav-tab" data-tab="game2">
+                    <i class="fas fa-draw-polygon"></i> Draw Fence
+                </button>
+                <button class="nav-tab" data-tab="game3">
+                    <i class="fas fa-brain"></i> Memory Match
+                </button>
+                <button class="nav-tab" data-tab="learn">
+                    <i class="fas fa-graduation-cap"></i> Learn
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="hero-title">Learn Networking <span class="highlight">Playfully!</span></h1>
-            <p class="hero-subtitle">IP addresses, subnetting, and binary made easy with interactive games and visual learning.</p>
-            <div class="hero-buttons">
-                <a href="#games" class="btn btn-primary">
-                    <i class="fas fa-play-circle"></i> Start Playing
-                </a>
-                <a href="#learn" class="btn btn-secondary">
-                    <i class="fas fa-graduation-cap"></i> Start Learning
-                </a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="ip-visualizer" id="heroVisualizer">
-                <!-- Dynamic IP visualization -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Games Section -->
-    <section class="section games-section" id="games">
-        <h2 class="section-title">🎮 Interactive Games</h2>
-        <p class="section-subtitle">Learn by playing these fun games!</p>
-        
-        <div class="games-grid">
-            <!-- Game 1: IP Guesser -->
-            <div class="game-card" onclick="loadGame('ip-guesser')">
-                <div class="game-icon">
-                    <i class="fas fa-search"></i>
-                </div>
-                <h3>IP Detective</h3>
-                <p>Find valid IP addresses in a sea of imposters!</p>
-                <div class="game-difficulty">
-                    <span class="difficulty-badge easy">Easy</span>
-                </div>
-            </div>
-
-            <!-- Game 2: Digital Neighborhood -->
-            <div class="game-card" onclick="loadGame('neighborhood')">
-                <div class="game-icon">
-                    <i class="fas fa-city"></i>
-                </div>
-                <h3>Digital Neighborhood</h3>
-                <p>Explore how devices live in network neighborhoods</p>
-                <div class="game-difficulty">
-                    <span class="difficulty-badge medium">Medium</span>
-                </div>
-            </div>
-
-            <!-- Game 3: Binary Builder -->
-            <div class="game-card" onclick="loadGame('binary-builder')">
-                <div class="game-icon">
-                    <i class="fas fa-puzzle-piece"></i>
-                </div>
-                <h3>Binary Builder</h3>
-                <p>Flip bits to match target IP addresses</p>
-                <div class="game-difficulty">
-                    <span class="difficulty-badge hard">Hard</span>
-                </div>
-            </div>
-
-            <!-- Game 4: Subnet Puzzle -->
-            <div class="game-card" onclick="loadGame('subnet-puzzle')">
-                <div class="game-icon">
-                    <i class="fas fa-route"></i>
-                </div>
-                <h3>Subnet Puzzle</h3>
-                <p>Match devices to their correct subnets</p>
-                <div class="game-difficulty">
-                    <span class="difficulty-badge expert">Expert</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Learning Tools -->
-    <section class="section tools-section" id="tools">
-        <h2 class="section-title">🛠️ Learning Tools</h2>
-        
-        <div class="tools-container">
-            <!-- IP Explorer Tool -->
-            <div class="tool-card">
-                <h3><i class="fas fa-map-marked-alt"></i> IP Explorer</h3>
-                <div class="tool-input-group">
-                    <input type="text" id="ipInput" placeholder="Enter IP like 192.168.1.1" 
-                           pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}">
-                    <button onclick="analyzeIP()" class="btn-tool">
-                        <i class="fas fa-search"></i> Analyze
-                    </button>
-                </div>
-                <div id="ipAnalysis" class="analysis-result">
-                    <!-- Results appear here -->
-                </div>
-            </div>
-
-            <!-- Subnet Calculator -->
-            <div class="tool-card">
-                <h3><i class="fas fa-calculator"></i> Subnet Calculator</h3>
-                <div class="tool-input-group">
-                    <input type="text" id="subnetInput" placeholder="192.168.1.0/24">
-                    <button onclick="calculateSubnet()" class="btn-tool">
-                        <i class="fas fa-calculator"></i> Calculate
-                    </button>
-                </div>
-                <div id="subnetResult" class="analysis-result">
-                    <!-- Results appear here -->
-                </div>
-            </div>
-
-            <!-- Binary Converter -->
-            <div class="tool-card">
-                <h3><i class="fas fa-exchange-alt"></i> Binary Converter</h3>
-                <div class="binary-converter">
-                    <div class="binary-input">
-                        <label>Decimal:</label>
-                        <input type="number" id="decimalInput" min="0" max="255" value="192" 
-                               oninput="convertDecimalToBinary()">
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="welcome-section">
+                    <h2>Welcome to Subnet Neighborhood! 🏘️</h2>
+                    <p class="intro-text">Learn IP addressing and subnetting through simple, fun games!</p>
+                    
+                    <div class="analogy-box">
+                        <h3><i class="fas fa-lightbulb"></i> Simple Analogy:</h3>
+                        <div class="analogy-item">
+                            <div class="analogy-icon">🏠</div>
+                            <div class="analogy-text">
+                                <strong>IP Address</strong> = House Address
+                                <p>Example: 192.168.1.10 = Springfield.Downtown.House#10</p>
+                            </div>
+                        </div>
+                        <div class="analogy-item">
+                            <div class="analogy-icon">🏘️</div>
+                            <div class="analogy-text">
+                                <strong>Subnet</strong> = Neighborhood
+                                <p>All houses that start with "192.168.1" are in the same neighborhood</p>
+                            </div>
+                        </div>
+                        <div class="analogy-item">
+                            <div class="analogy-icon">🎯</div>
+                            <div class="analogy-text">
+                                <strong>The Rule</strong>
+                                <p>Same first 3 numbers = Same neighborhood!</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="binary-output">
-                        <label>Binary:</label>
-                        <div class="binary-bits" id="binaryBits">
-                            <!-- Binary bits appear here -->
+
+                    <div class="game-options">
+                        <h3>Choose a Game to Start Learning:</h3>
+                        <div class="game-cards">
+                            <div class="game-card" onclick="app.showTab('game1')">
+                                <div class="game-icon">🔍</div>
+                                <h4>Find Neighbors</h4>
+                                <p>Identify which houses are in your neighborhood</p>
+                                <span class="difficulty easy">Easy</span>
+                            </div>
+                            <div class="game-card" onclick="app.showTab('game2')">
+                                <div class="game-icon">🎨</div>
+                                <h4>Draw Fence</h4>
+                                <p>Select houses to create your neighborhood</p>
+                                <span class="difficulty medium">Medium</span>
+                            </div>
+                            <div class="game-card" onclick="app.showTab('game3')">
+                                <div class="game-icon">🧠</div>
+                                <h4>Memory Match</h4>
+                                <p>Match houses from the same neighborhood</p>
+                                <span class="difficulty hard">Hard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 1: Find Neighbors -->
+            <div id="game1" class="tab-content">
+                <div class="game-header">
+                    <h2><i class="fas fa-search"></i> Find Your Neighbors</h2>
+                    <p class="game-subtitle">Click on houses that are in YOUR neighborhood!</p>
+                </div>
+
+                <div class="game-instructions">
+                    <div class="instruction-box">
+                        <h3><i class="fas fa-info-circle"></i> How to Play:</h3>
+                        <p><strong>Your House:</strong> <span class="your-house" id="yourHouse1">192.168.1.10</span></p>
+                        <p><strong>Your Neighborhood:</strong> All houses starting with <strong>192.168.1</strong></p>
+                        <p><strong>Goal:</strong> Click houses that start with the SAME first 3 numbers!</p>
+                    </div>
+                </div>
+
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Score:</span>
+                        <span class="stat-value" id="score1">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Houses Found:</span>
+                        <span class="stat-value" id="found1">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Time:</span>
+                        <span class="stat-value" id="time1">60</span>s
+                    </div>
+                </div>
+
+                <div class="neighborhood-container">
+                    <div class="neighborhood-grid" id="neighborhoodGrid1">
+                        <!-- Houses will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="btn btn-primary" onclick="app.startGame1()">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                    <button class="btn btn-secondary" onclick="app.resetGame1()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button class="btn btn-hint" onclick="app.showHint1()">
+                        <i class="fas fa-lightbulb"></i> Hint
+                    </button>
+                </div>
+
+                <div class="feedback" id="feedback1">
+                    <p>Click "Start Game" to begin!</p>
+                </div>
+            </div>
+
+            <!-- Game 2: Draw Fence -->
+            <div id="game2" class="tab-content">
+                <div class="game-header">
+                    <h2><i class="fas fa-draw-polygon"></i> Draw Your Neighborhood Fence</h2>
+                    <p class="game-subtitle">Select which houses should be inside your neighborhood fence!</p>
+                </div>
+
+                <div class="game-instructions">
+                    <div class="instruction-box">
+                        <h3><i class="fas fa-info-circle"></i> How to Play:</h3>
+                        <p><strong>Your House:</strong> <span class="your-house" id="yourHouse2">192.168.1.10</span></p>
+                        <p><strong>Neighborhood Size:</strong> <span id="fenceSize">0</span> houses selected</p>
+                        <p><strong>Goal:</strong> Select ALL houses that belong in your neighborhood</p>
+                    </div>
+                </div>
+
+                <div class="game-area">
+                    <div class="houses-container">
+                        <h3>Select houses in your neighborhood:</h3>
+                        <div class="houses-grid" id="housesGrid2">
+                            <!-- Houses will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="fence-controls">
+                        <div class="fence-visual">
+                            <div class="fence-label">Neighborhood Fence</div>
+                            <div class="fence-bar">
+                                <div class="fence-fill" id="fenceFill"></div>
+                            </div>
+                            <div class="fence-stats">
+                                <span id="selectedCount">0</span> / <span id="totalHouses">24</span> houses selected
+                            </div>
+                        </div>
+                        
+                        <div class="control-buttons">
+                            <button class="btn btn-primary" onclick="app.checkFence()">
+                                <i class="fas fa-check-circle"></i> Check My Fence
+                            </button>
+                            <button class="btn btn-secondary" onclick="app.resetGame2()">
+                                <i class="fas fa-redo"></i> Start Over
+                            </button>
+                            <button class="btn btn-hint" onclick="app.autoSelectNeighborhood()">
+                                <i class="fas fa-robot"></i> Auto-Select
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback" id="feedback2">
+                    <p>Select houses that belong in your neighborhood!</p>
+                </div>
+            </div>
+
+            <!-- Game 3: Memory Match -->
+            <div id="game3" class="tab-content">
+                <div class="game-header">
+                    <h2><i class="fas fa-brain"></i> Neighborhood Memory Match</h2>
+                    <p class="game-subtitle">Match houses from the same neighborhood!</p>
+                </div>
+
+                <div class="game-instructions">
+                    <div class="instruction-box">
+                        <h3><i class="fas fa-info-circle"></i> How to Play:</h3>
+                        <p><strong>Rule:</strong> Match two houses from the SAME neighborhood</p>
+                        <p><strong>How to know:</strong> Same first 3 numbers = Same neighborhood!</p>
+                        <p><strong>Colors:</strong> Each neighborhood has a different color</p>
+                    </div>
+                </div>
+
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Matches:</span>
+                        <span class="stat-value" id="matches3">0</span>/8
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Moves:</span>
+                        <span class="stat-value" id="moves3">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Time:</span>
+                        <span class="stat-value" id="time3">60</span>s
+                    </div>
+                </div>
+
+                <div class="memory-game">
+                    <div class="memory-grid" id="memoryGrid3">
+                        <!-- Cards will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="btn btn-primary" onclick="app.startGame3()">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                    <button class="btn btn-secondary" onclick="app.resetGame3()">
+                        <i class="fas fa-redo"></i> Restart
+                    </button>
+                    <button class="btn btn-hint" onclick="app.showNeighborhoodColors()">
+                        <i class="fas fa-palette"></i> Show Neighborhoods
+                    </button>
+                </div>
+
+                <div class="feedback" id="feedback3">
+                    <p>Click "Start Game" to begin matching!</p>
+                </div>
+            </div>
+
+            <!-- Learn Tab -->
+            <div id="learn" class="tab-content">
+                <div class="learn-section">
+                    <h2><i class="fas fa-graduation-cap"></i> Learn Subnetting Simply</h2>
+                    
+                    <div class="learn-modules">
+                        <!-- Module 1: What is an IP? -->
+                        <div class="module">
+                            <h3>🌐 What is an IP Address?</h3>
+                            <div class="module-content">
+                                <p>An IP address is like a <strong>house address for computers</strong>.</p>
+                                <div class="example">
+                                    <p><strong>Example:</strong> 192.168.1.10</p>
+                                    <div class="ip-breakdown">
+                                        <div class="ip-part">
+                                            <span class="part-number">192</span>
+                                            <span class="part-label">City</span>
+                                        </div>
+                                        <div class="ip-part">
+                                            <span class="part-number">168</span>
+                                            <span class="part-label">Street</span>
+                                        </div>
+                                        <div class="ip-part">
+                                            <span class="part-number">1</span>
+                                            <span class="part-label">Block</span>
+                                        </div>
+                                        <div class="ip-part">
+                                            <span class="part-number">10</span>
+                                            <span class="part-label">House #</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 2: What is a Subnet? -->
+                        <div class="module">
+                            <h3>🏘️ What is a Subnet?</h3>
+                            <div class="module-content">
+                                <p>A subnet is a <strong>group of computers that can talk directly</strong>.</p>
+                                <div class="example">
+                                    <p><strong>Think of it as a neighborhood:</strong></p>
+                                    <div class="neighborhood-example">
+                                        <div class="neighborhood">
+                                            <div class="neighborhood-name">Downtown (192.168.1)</div>
+                                            <div class="houses">
+                                                <span class="house">192.168.1.1</span>
+                                                <span class="house">192.168.1.10</span>
+                                                <span class="house">192.168.1.100</span>
+                                                <span class="house">192.168.1.254</span>
+                                            </div>
+                                        </div>
+                                        <div class="neighborhood">
+                                            <div class="neighborhood-name">Uptown (192.168.2)</div>
+                                            <div class="houses">
+                                                <span class="house">192.168.2.1</span>
+                                                <span class="house">192.168.2.10</span>
+                                                <span class="house">192.168.2.100</span>
+                                                <span class="house">192.168.2.254</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 3: The Simple Rule -->
+                        <div class="module">
+                            <h3>🎯 The ONE Rule You Need</h3>
+                            <div class="module-content">
+                                <div class="rule-box">
+                                    <p class="rule-text">
+                                        <strong>If two IP addresses have the SAME first 3 numbers,<br>
+                                        they're in the SAME subnet!</strong>
+                                    </p>
+                                    <div class="rule-examples">
+                                        <div class="example correct">
+                                            <div class="example-label">✅ SAME SUBNET:</div>
+                                            <div class="example-ips">
+                                                192.168.1.10<br>
+                                                192.168.1.20
+                                            </div>
+                                            <div class="explanation">Both start with 192.168.1</div>
+                                        </div>
+                                        <div class="example wrong">
+                                            <div class="example-label">❌ DIFFERENT SUBNET:</div>
+                                            <div class="example-ips">
+                                                192.168.1.10<br>
+                                                192.168.2.10
+                                            </div>
+                                            <div class="explanation">Different third number (1 vs 2)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 4: Practice -->
+                        <div class="module">
+                            <h3>🧪 Practice Quiz</h3>
+                            <div class="module-content">
+                                <div class="quiz">
+                                    <div class="quiz-question" id="quizQuestion">
+                                        Are these in the same subnet?<br>
+                                        192.168.1.15 and 192.168.1.25
+                                    </div>
+                                    <div class="quiz-options">
+                                        <button class="quiz-option" onclick="app.checkQuizAnswer(true)">
+                                            ✅ Yes, same subnet
+                                        </button>
+                                        <button class="quiz-option" onclick="app.checkQuizAnswer(false)">
+                                            ❌ No, different subnet
+                                        </button>
+                                    </div>
+                                    <div class="quiz-feedback" id="quizFeedback"></div>
+                                    <button class="btn btn-primary" onclick="app.nextQuizQuestion()">
+                                        Next Question
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Game Area (Dynamically Loaded) -->
-    <section class="section game-area-section" id="gameArea">
-        <div class="game-container" id="gameContainer">
-            <!-- Games load here dynamically -->
-            <div class="welcome-message">
-                <h2>👋 Welcome to NetFun!</h2>
-                <p>Select a game from above to start playing and learning!</p>
-                <div class="game-stats">
-                    <div class="stat">
-                        <i class="fas fa-trophy"></i>
-                        <span>Score: <span id="totalScore">0</span></span>
-                    </div>
-                    <div class="stat">
-                        <i class="fas fa-star"></i>
-                        <span>Games Played: <span id="gamesPlayed">0</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>NetFun</h4>
-                <p>Making networking education fun, visual, and accessible for everyone.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#home">Home</a>
-                <a href="#learn">Learn</a>
-                <a href="#games">Games</a>
-                <a href="#tools">Tools</a>
-            </div>
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Subnet Neighborhood</h4>
+                    <p>Making networking easy through simple games and analogies.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#" onclick="app.showTab('home')">Home</a>
+                    <a href="#" onclick="app.showTab('game1')">Find Neighbors</a>
+                    <a href="#" onclick="app.showTab('learn')">Learn</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Created with</h4>
+                    <p><i class="fas fa-heart"></i> by Network Learners</p>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Made with <i class="fas fa-heart"></i> for networking learners everywhere</p>
+            <div class="footer-bottom">
+                <p>© 2024 Subnet Neighborhood. All analogies are simplified for learning.</p>
+            </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="content.js"></script>
     <script src="app.js"></script>
-    <script src="games/ip-guesser.js"></script>
-    <script src="games/subnet-puzzle.js"></script>
-    <script src="games/binary-builder.js"></script>
-    <script src="components/ip-visualizer.js"></script>
-    <script src="components/neighborhood.js"></script>
 </body>
 </html>
